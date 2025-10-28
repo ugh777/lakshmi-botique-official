@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lakshmi Boutique — Online Shop</title>
+  <style>
+    :root{--accent:#0aa;--muted:#f6f6f6;--accent-dark:#006c6c}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);color:#222}
+    header{background:linear-gradient(90deg,rgba(10,170,170,.06),rgba(60,150,220,.03));padding:18px 20px;border-bottom:1px solid #eee}
+    .container{max-width:1100px;margin:18px auto;padding:0 18px}
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700}
+    h1{font-size:20px;margin:0}
+
+    .hero{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:18px 0}
+    .hero p{margin:0;color:#444}
+
+    /* features */
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+    .feature{background:#fff;border:1px solid #eee;padding:12px;border-radius:10px;min-width:200px;flex:1}
+    .feature strong{display:block}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .card{background:#fff;border:1px solid #eee;border-radius:10px;padding:10px;overflow:hidden;display:flex;flex-direction:column}
+    .card img{width:100%;height:280px;object-fit:cover;border-radius:8px}
+    .card .meta{padding:8px 4px;display:flex;justify-content:space-between;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;font-weight:600}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+
+    /* contact */
+    .contact{display:flex;gap:12px;align-items:center;margin-top:18px}
+    .wa{display:inline-flex;gap:8px;align-items:center;background:#DCF8C6;padding:10px 14px;border-radius:8px;border:1px solid #cfe9a8}
+
+    footer{padding:18px;background:#fff;border-top:1px solid #eee;margin-top:28px}
+
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal.open{display:flex}
+    .modal .panel{background:#fff;max-width:900px;width:100%;border-radius:10px;overflow:hidden}
+    .modal .panel img{width:100%;height:auto;display:block}
+    .modal .close{position:absolute;right:20px;top:18px;background:#fff;border-radius:8px;padding:6px 10px;border:none;cursor:pointer}
+
+    /* upload (non-functional) */
+    .upload{background:#fff;border:1px dashed #ddd;padding:14px;border-radius:8px;margin-top:12px}
+    input[type=file]{display:block}
+
+    @media (min-width:900px){
+      header{padding:22px 32px}
+      .hero{flex-direction:row;align-items:center;justify-content:space-between}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">LB</div>
+        <div>
+          <h1>Lakshmi Boutique</h1>
+          <div style="font-size:13px;color:#666">Handpicked dresses — pickup from home available</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2 style="margin-bottom:6px">Welcome — Beautiful dresses & blouses</h2>
+        <p>Browse the latest collection below. To order or ask questions contact via WhatsApp.</p>
+
+        <div class="features" aria-hidden="false">
+          <div class="feature"><strong>Free first pickup</strong><span>We will pick up your cloth material from home free for the first time.</span></div>
+          <div class="feature"><strong>Home pickup service</strong><span>Our shop person will come to your house to collect materials.</span></div>
+          <div class="feature"><strong>Reasonable prices & fast delivery</strong><span>All products are reasonably priced and quickly delivered.</span></div>
+        </div>
+
+        <div class="contact">
+          <a class="wa" href="https://wa.me/918639299665?text=Hello%20Lakshmi%20Boutique%20-%20I%20want%20to%20order%20a%20dress" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5L3.5 20.5v-5.5A7 7 0 0 1 10 8h.5a7 7 0 0 1 7 7v.5a7 7 0 0 1-7 7H10" stroke="#075E54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            +91 86392 99665 — WhatsApp
+          </a>
+
+          <a href="#gallery" class="btn ghost">View Collection</a>
+        </div>
+
+        <div class="upload" aria-hidden="true">
+          <label><strong>Upload product images (admin)</strong></label>
+          <form onsubmit="event.preventDefault();alert('This is a static demo — server required to actually upload files.');">
+            <input type="file" accept="image/*" multiple />
+            <div style="margin-top:8px"><button class="btn" type="submit">Upload (demo)</button></div>
+          </form>
+        </div>
+      </div>
+
+      <div style="min-width:220px;">
+        <img src="/mnt/data/IMG-20251028-WA0000.jpg" alt="Dress showcase" style="width:320px;max-width:100%;border-radius:10px;border:1px solid #eee;box-shadow:0 6px 18px rgba(10,10,10,.06)">
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h3 style="margin-top:8px">Gallery</h3>
+
+      <div class="gallery">
+        <div class="card">
+          <img src="/mnt/data/IMG-20251023-WA0014[1].jpg" alt="yellow dress" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Yellow dress</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20yellow%20dress" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251023-WA0019[1].jpg" alt="white teal dress" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>White & teal</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20white%20and%20teal%20dress" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251028-WA0001.jpg" alt="pink blouse" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Pink blouse</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20pink%20blouse" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251028-WA0002.jpg" alt="maroon blouse" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Maroon scalloped</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20maroon%20blouse" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251028-WA0003.jpg" alt="green blouse" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Green blouse</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20green%20blouse" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251028-WA0004.jpg" alt="blue floral dress" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Blue floral gown</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20blue%20floral%20gown" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251028-WA0005.jpg" alt="green velvet" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Olive gown</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20olive%20gown" target="_blank">Order</a></div>
+        </div>
+
+        <div class="card">
+          <img src="/mnt/data/IMG-20251028-WA0000.jpg" alt="navy suit" loading="lazy" onclick="openModal(this.src)">
+          <div class="meta"><div>Navy embroidered</div><a class="btn" href="https://wa.me/918639299665?text=I%20like%20the%20navy%20dress" target="_blank">Order</a></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="panel">
+      <button class="close" onclick="closeModal()">Close ✕</button>
+      <img id="modalImg" src="" alt="Zoomed product">
+    </div>
+  </div>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <strong>Lakshmi Boutique</strong> — Contact: +91 86392 99665</div>
+      <div style="font-size:13px;color:#666">Pickup from home available • First pick-up free • Reasonable prices & fast delivery</div>
+    </div>
+  </footer>
+
+  <script>
+    function openModal(src){
+      var modal=document.getElementById('modal');
+      var img=document.getElementById('modalImg');
+      img.src=src; modal.classList.add('open');
+    }
+    function closeModal(){
+      var modal=document.getElementById('modal');
+      modal.classList.remove('open');
+      document.getElementById('modalImg').src='';
+    }
+    // close on escape
+    document.addEventListener('keydown',function(e){if(e.key==='Escape') closeModal();});
+  </script>
+</body>
+</html>
